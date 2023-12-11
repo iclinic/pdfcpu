@@ -62,13 +62,32 @@ func (ctx *Context) handleInfoDict(d Dict) (err error) {
 			}
 			ctx.Creator = csvSafeString(ctx.Creator)
 
-		case "Producer", "CreationDate", "ModDate":
-			// pdfcpu will modify these as direct dict entries.
-			log.Write.Printf("found %s", key)
-			if indRef, ok := value.(IndirectRef); ok {
-				// Get rid of these extra objects.
-				ctx.Optimize.DuplicateInfoObjects[int(indRef.ObjectNumber)] = true
+		case "Producer":
+			log.Write.Println("found Producer")
+			// Record for stats.
+			ctx.Producer, err = ctx.DereferenceText(value)
+			if err != nil {
+				return err
 			}
+			ctx.Producer = csvSafeString(ctx.Producer)
+
+		case "CreationDate":
+			log.Write.Println("found CreationDate")
+			// Record for stats.
+			ctx.CreationDate, err = ctx.DereferenceText(value)
+			if err != nil {
+				return err
+			}
+			ctx.CreationDate = csvSafeString(ctx.CreationDate)
+
+		case "ModDate":
+			log.Write.Println("found ModDate")
+			// Record for stats.
+			ctx.ModDate, err = ctx.DereferenceText(value)
+			if err != nil {
+				return err
+			}
+			ctx.ModDate = csvSafeString(ctx.ModDate)
 
 		case "Trapped":
 			log.Write.Println("found Trapped")
@@ -92,9 +111,9 @@ func (ctx *Context) ensureInfoDict() error {
 	// Subject              -
 	// Keywords             -
 	// Creator              -
-	// Producer		        modified by pdfcpu
-	// CreationDate	        modified by pdfcpu
-	// ModDate		        modified by pdfcpu
+	// Producer             -
+	// CreationDate         -
+	// ModDate              -
 	// Trapped              -
 
 	now := DateString(time.Now())
@@ -126,10 +145,6 @@ func (ctx *Context) ensureInfoDict() error {
 	if err = ctx.handleInfoDict(d); err != nil {
 		return err
 	}
-
-	d.Update("CreationDate", StringLiteral(now))
-	d.Update("ModDate", StringLiteral(now))
-	d.Update("Producer", StringLiteral(v))
 
 	return nil
 }
