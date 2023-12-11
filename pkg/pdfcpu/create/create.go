@@ -21,8 +21,8 @@ import (
 	"io"
 	"io/ioutil"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/primitives"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/primitives"
 	"github.com/pkg/errors"
 )
 

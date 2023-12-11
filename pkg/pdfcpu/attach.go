@@ -22,8 +22,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/filter"
-	"github.com/pdfcpu/pdfcpu/pkg/log"
+	"github.com/iclinic/pdfcpu/pkg/filter"
+	"github.com/iclinic/pdfcpu/pkg/log"
 	"github.com/pkg/errors"
 )
 

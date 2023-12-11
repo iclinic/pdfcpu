@@ -23,7 +23,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/pdfcpu/pdfcpu/pkg/font"
+	"github.com/iclinic/pdfcpu/pkg/font"
 )
 
 const (
@@ -177,8 +177,9 @@ type Configuration struct {
 // ConfigPath defines the location of pdfcpu's configuration directory.
 // If set to a file path, pdfcpu will ensure the config dir at this location.
 // Other possible values:
-// 	default:	Ensure config dir at default location
-// 	disable:	Disable config dir usage
+//
+//	default:	Ensure config dir at default location
+//	disable:	Disable config dir usage
 var ConfigPath string = "default"
 
 var loadedDefaultConfig *Configuration

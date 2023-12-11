@@ -19,7 +19,7 @@ package pdfcpu
 import (
 	"strings"
 
-	pdffont "github.com/pdfcpu/pdfcpu/pkg/font"
+	pdffont "github.com/iclinic/pdfcpu/pkg/font"
 	"github.com/pkg/errors"
 )
 
@@ -117,17 +117,24 @@ func AnchorPosition(a Anchor, r *Rectangle, w, h float64) (x float64, y float64)
 // pdfcpu user space coordinate systems have the origin in one of four corners of r:
 //
 // LowerLeft corner (default = PDF user space)
-//		x extends to the right,
-//		y extends upward
+//
+//	x extends to the right,
+//	y extends upward
+//
 // LowerRight corner:
-//		x extends to the left,
-//		y extends upward
+//
+//	x extends to the left,
+//	y extends upward
+//
 // UpperLeft corner:
-//		x extends to the right,
-//		y extends downward
+//
+//	x extends to the right,
+//	y extends downward
+//
 // UpperRight corner:
-//		x extends to the left,
-//		y extends downward
+//
+//	x extends to the left,
+//	y extends downward
 func NormalizeCoord(x, y float64, r *Rectangle, origin Corner, absolute bool) (float64, float64) {
 	switch origin {
 	case UpperLeft:

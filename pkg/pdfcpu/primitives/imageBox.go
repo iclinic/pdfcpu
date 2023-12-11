@@ -22,7 +22,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu"
 	"github.com/pkg/errors"
 )
 

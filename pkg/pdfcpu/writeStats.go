@@ -22,7 +22,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/pdfcpu/pdfcpu/pkg/log"
+	"github.com/iclinic/pdfcpu/pkg/log"
 	"github.com/pkg/errors"
 )
 

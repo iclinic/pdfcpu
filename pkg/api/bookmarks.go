@@ -21,7 +21,7 @@ import (
 	"os"
 	"time"
 
-	pdf "github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
+	pdf "github.com/iclinic/pdfcpu/pkg/pdfcpu"
 	"github.com/pkg/errors"
 )
 
