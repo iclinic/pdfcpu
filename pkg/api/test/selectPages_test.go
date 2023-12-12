@@ -18,16 +18,13 @@ package test
 
 import (
 	"fmt"
-	"regexp"
 	"testing"
 
 	"strings"
 
 	"github.com/iclinic/pdfcpu/pkg/api"
-	"github.com/iclinic/pdfcpu/pkg/pdfcpu"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/types"
 )
-
-var r *regexp.Regexp
 
 func testPageSelectionSyntaxOk(t *testing.T, s string) {
 	t.Helper()
@@ -62,7 +59,7 @@ func TestPageSelectionSyntax(t *testing.T) {
 	}
 }
 
-func selectedPagesString(sp pdfcpu.IntSet, pageCount int) string {
+func selectedPagesString(sp types.IntSet, pageCount int) string {
 	s := []string{}
 	var t string
 
@@ -84,7 +81,7 @@ func testSelectedPages(s string, pageCount int, compareString string, t *testing
 		t.Fatalf("testSelectedPages(%s) %v\n", s, err)
 	}
 
-	selectedPages, err := api.PagesForPageSelection(pageCount, pageSelection, false)
+	selectedPages, err := api.PagesForPageSelection(pageCount, pageSelection, false, true)
 	if err != nil {
 		t.Fatalf("testSelectedPages(%s) %v\n", s, err)
 	}
