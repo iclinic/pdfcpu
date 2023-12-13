@@ -23,11 +23,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
-	"github.com/pdfcpu/pdfcpu/pkg/cli"
-	"github.com/pdfcpu/pdfcpu/pkg/log"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/iclinic/pdfcpu/pkg/api"
+	"github.com/iclinic/pdfcpu/pkg/cli"
+	"github.com/iclinic/pdfcpu/pkg/log"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/model"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/types"
 )
 
 var inDir, outDir, resDir, fontDir, samplesDir string

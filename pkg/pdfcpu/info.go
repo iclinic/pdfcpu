@@ -21,10 +21,10 @@ import (
 	"sort"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/log"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/draw"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/iclinic/pdfcpu/pkg/log"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/draw"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/model"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/types"
 )
 
 func extractAuthor(ctx *model.Context, obj types.Object) (err error) {
@@ -43,6 +43,36 @@ func extractCreator(ctx *model.Context, obj types.Object) (err error) {
 		return err
 	}
 	ctx.Creator = model.CSVSafeString(ctx.Creator)
+	return nil
+}
+
+func extractProducer(ctx *model.Context, obj types.Object) (err error) {
+	// Record for stats.
+	ctx.Producer, err = ctx.DereferenceText(obj)
+	if err != nil {
+		return err
+	}
+	ctx.Producer = model.CSVSafeString(ctx.Producer)
+	return nil
+}
+
+func extractCreationDate(ctx *model.Context, obj types.Object) (err error) {
+	// Record for stats.
+	ctx.CreationDate, err = ctx.DereferenceText(obj)
+	if err != nil {
+		return err
+	}
+	ctx.CreationDate = model.CSVSafeString(ctx.CreationDate)
+	return nil
+}
+
+func extractModDate(ctx *model.Context, obj types.Object) (err error) {
+	// Record for stats.
+	ctx.ModDate, err = ctx.DereferenceText(obj)
+	if err != nil {
+		return err
+	}
+	ctx.ModDate = model.CSVSafeString(ctx.ModDate)
 	return nil
 }
 
@@ -79,12 +109,22 @@ func handleInfoDict(ctx *model.Context, d types.Dict) (err error) {
 				return err
 			}
 
-		case "Producer", "CreationDate", "ModDate":
-			// pdfcpu will modify these as direct dict entries.
+		case "Producer":
 			logKey(key)
-			if indRef, ok := value.(types.IndirectRef); ok {
-				// Get rid of these extra objects.
-				ctx.Optimize.DuplicateInfoObjects[int(indRef.ObjectNumber)] = true
+			if err = extractProducer(ctx, value); err != nil {
+				return err
+			}
+
+		case "CreationDate":
+			logKey(key)
+			if err = extractCreationDate(ctx, value); err != nil {
+				return err
+			}
+
+		case "ModDate":
+			logKey(key)
+			if err = extractModDate(ctx, value); err != nil {
+				return err
 			}
 
 		case "Trapped":
@@ -110,9 +150,9 @@ func ensureInfoDict(ctx *model.Context) error {
 	// Subject              -
 	// Keywords             -
 	// Creator              -
-	// Producer		        modified by pdfcpu
-	// CreationDate	        modified by pdfcpu
-	// ModDate		        modified by pdfcpu
+	// Producer             -
+	// CreationDate         -
+	// ModDate              -
 	// Trapped              -
 
 	now := types.DateString(time.Now())
@@ -144,10 +184,6 @@ func ensureInfoDict(ctx *model.Context) error {
 	if err = handleInfoDict(ctx, d); err != nil {
 		return err
 	}
-
-	d.Update("CreationDate", types.StringLiteral(now))
-	d.Update("ModDate", types.StringLiteral(now))
-	d.Update("Producer", types.StringLiteral(v))
 
 	return nil
 }

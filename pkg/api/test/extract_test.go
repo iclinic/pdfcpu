@@ -24,9 +24,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/iclinic/pdfcpu/pkg/api"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/types"
 )
 
 func TestExtractImages(t *testing.T) {

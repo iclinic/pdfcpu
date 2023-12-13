@@ -20,8 +20,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/iclinic/pdfcpu/pkg/api"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/model"
 )
 
 func TestPageMode(t *testing.T) {

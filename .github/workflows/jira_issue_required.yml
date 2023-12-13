@@ -1,0 +1,18 @@
+# Check whether git branch name is associated to a Jira issue
+name: Jira issue required
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: iclinic/automations/jira-issue-required@v1
+        with:
+          jira_base_url: ${{ secrets.JIRA_BASE_URL }}
+          jira_user_email: ${{ secrets.JIRA_USER_EMAIL }}
+          jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
+          possible_issue_reference: ${{ github.ref_name }}

@@ -23,11 +23,11 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/pdfcpu/pdfcpu/pkg/font"
-	pdffont "github.com/pdfcpu/pdfcpu/pkg/pdfcpu/font"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/primitives"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/iclinic/pdfcpu/pkg/font"
+	pdffont "github.com/iclinic/pdfcpu/pkg/pdfcpu/font"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/model"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/primitives"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/types"
 	"github.com/pkg/errors"
 )
 
