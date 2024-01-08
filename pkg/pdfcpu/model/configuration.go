@@ -23,8 +23,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/font"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
+	"github.com/iclinic/pdfcpu/pkg/font"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/types"
 )
 
 const (

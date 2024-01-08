@@ -25,11 +25,11 @@ import (
 	"sort"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/api"
-	"github.com/pdfcpu/pdfcpu/pkg/log"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/form"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/iclinic/pdfcpu/pkg/api"
+	"github.com/iclinic/pdfcpu/pkg/log"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/form"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/model"
 	"github.com/pkg/errors"
 )
 

@@ -22,13 +22,13 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/iclinic/pdfcpu/pkg/log"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/draw"
+	pdffont "github.com/iclinic/pdfcpu/pkg/pdfcpu/font"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/model"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/primitives"
+	"github.com/iclinic/pdfcpu/pkg/pdfcpu/types"
 	"github.com/mattn/go-runewidth"
-	"github.com/pdfcpu/pdfcpu/pkg/log"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/draw"
-	pdffont "github.com/pdfcpu/pdfcpu/pkg/pdfcpu/font"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/primitives"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/types"
 	"github.com/pkg/errors"
 )
 
