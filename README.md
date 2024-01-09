@@ -16,6 +16,18 @@ It provides both an API and a CLI. Supported are all versions up to PDF 1.7 (ISO
 
 Support for PDF 2.0 is basic and ongoing work.
 
+## Modified Files Notice
+
+The `pkg/pdfcpu/info.go` file has been modified by [Afya iClinic](https://iclinic.com.br) to allow customization
+of some PDF metadata internally defined by the library. Since the `Producer` metadata can expose
+information from the library used to create the PDF, leading to a vulnerability problem,
+the change allows this and other metadata to be overwritten, omitting such information.
+
+Metadata fields affected by the modification:
+* Producer
+* CreationDate
+* ModDate
+
 ## Motivation
 
 This is an effort to build a comprehensive PDF processing library from the ground up written in Go. Over time pdfcpu aims to support the standard range of PDF processing features and also any interesting use cases that may present themselves along the way.
